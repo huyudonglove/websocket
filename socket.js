@@ -6,9 +6,18 @@ const wsServer = new Server({ port: 8085 });
 let socketSet = new Set();
 
 // 连接
-wsServer.on('connection', websocket => {
-    console.log(websocket)
-    socketSet.add(websocket)
+wsServer.on('connection', (ws) => {
+    //console.log(websocket)
+    //socketSet.add(websocket);
+    // socketSet.map(ws=>{
+
+    // })
+    ws.send(`success`)
+  setInterval(()=>{
+      ws.send(`{
+          message:1
+      }`)
+  },2000)
 });
 
 // 初始化消息数
